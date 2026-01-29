@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adarsh Anand | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= THEME VARIABLES ================= */
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --accent:#00e5ff;
+    --text:#ffffff;
+}
+
+/* ===== THEMES ===== */
+body.blue   { --accent:#00e5ff; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.green  { --accent:#00ff88; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.red    { --accent:#ff4d4d; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.yellow { --accent:#ffd93d; --bg:#0f172a; --card:#1e293b; --text:black; }
+body.black  { --accent:#888;    --bg:#000;    --card:#111;    --text:white; }
+body.white  { --accent:#333;    --bg:#f5f5f5; --card:#ffffff; --text:#111; }
+
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:.4s;
+}
+
+section{
+    padding:100px 8%;
+}
+
+h2{
+    color:var(--accent);
+    margin-bottom:35px;
+}
+
+/* ================= NAV ================= */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:18px 8%;
+    background:#0b1020;
+    display:flex;
+    justify-content:space-between;
+    z-index:1000;
+}
+
+/* ===== SKILL STYLE UPGRADE ===== */
+.skill-item{
+    margin-bottom:18px;
+}
+
+.skill-item span{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.bar{
+    height:10px;
+    background:#2b3a55;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:var(--accent); /* auto theme color */
+    border-radius:10px;
+    transition:1.5s;
+}
+
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{color:var(--accent);}
+
+/* ================= HERO ================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+}
+
+.hero img{
+    width:260px;
+    border-radius:50%;
+    box-shadow:0 0 40px var(--accent);
+}
+
+/* ================= GRID + CARDS ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:var(--card);
+    padding:22px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px var(--accent);
+}
+
+/* ================= ABOUT (UPDATED LAYOUT) ================= */
+.about-wrapper{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.about-photo{
+    width:320px;
+    border-radius:12px;
+}
+
+.about-text{
+    flex:1;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ================= SKILL BARS ================= */
+.bar{
+    height:8px;
+    background:#2b3a55;
+    border-radius:10px;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:var(--accent);
+    transition:1.5s;
+}
+
+/* ================= CONTACT ================= */
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-form,
+.contact-info{
+    background:var(--card);
+    padding:25px;
+    border-radius:12px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:6px;
+}
+
+.btn{
+    background:var(--accent);
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ================= REVEAL ANIMATION ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+/* ================= THEME BUTTON ================= */
+.theme-toggle{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:none;
+    background:var(--accent);
+    cursor:pointer;
+    box-shadow:0 0 20px var(--accent);
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#0b1020;
+}
+
+</style>
+</head>
+
+<body class="blue">
+
+<!-- NAV -->
+<nav>
+<h3>Adarsh.</h3>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certificates">Certificates</a></li>
+<li><a href="#achievements">Achievements</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero reveal">
+<img src="profile.jpg">
+<div>
+<h1>Hi, I'm <span style="color:var(--accent)">Adarsh Anand</span></h1>
+<p>Cybersecurity • Android App Development • Full Stack</p>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+<h2>About Me</h2>
+
+<div class="about-wrapper">
+
+<img src="linkedin.jpg" class="about-photo">
+
+<div class="about-text">
+I'm a passionate Cybersecurity enthusiast and Android App Developer from Punjab, India.  
+I build secure systems, create Kotlin Android apps, and enjoy solving real-world problems.  
+
+I actively participate in hackathons, CTFs, and development projects to sharpen my skills and gain practical experience.
+
+<div class="grid" style="margin-top:25px">
+<div class="card">📍 Punjab, India<br>💼 3 Years Coding Experience</div>
+<div class="card">🌐 Surfing Web<br>📚 Reading<br>🎵 Music</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= SKILLS (NEWLY ADDED - NO REMOVAL) ================= -->
+<!-- ================= SKILLS (UPDATED WITH % + PROGRESS) ================= -->
+<section id="skills" class="reveal">
+<h2>💻 Skills</h2>
+
+<div class="grid">
+
+<!-- Programming Skills -->
+<div class="card">
+
+<h3 style="margin-bottom:15px;">Programming Languages</h3>
+
+<div class="skill-item">
+<span>C <b>80%</b></span>
+<div class="bar"><div class="fill" data-width="80%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>C++ <b>90%</b></span>
+<div class="bar"><div class="fill" data-width="90%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Python <b>85%</b></span>
+<div class="bar"><div class="fill" data-width="85%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Java <b>85%</b></span>
+<div class="bar"><div class="fill" data-width="85%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Kotlin <b>80%</b></span>
+<div class="bar"><div class="fill" data-width="80%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>HTML / CSS / JS <b>88%</b></span>
+<div class="bar"><div class="fill" data-width="88%"></div></div>
+</div>
+
+</div>
+
+<!-- Soft Skills -->
+<div class="card">
+<h3>Soft Skills</h3>
+Hard Working<br><br>
+Problem Solving<br><br>
+Communication<br><br>
+Teamwork<br><br>
+Quick Learner
+</div>
+
+</div>
+</section>
+
+
+
+<!-- EDUCATION (NEW ADDED) -->
+<section id="education" class="reveal">
+<h2>🎓 Education</h2>
+
+<div class="grid">
+<div class="card">
+<b>B.Tech – Computer Science</b><br>
+Lovely Professional University<br>
+Punjab, India<br>
+CGPA: 6 | Since 2023
+</div>
+
+<div class="card">
+<b>Intermediate (12th)</b><br>
+Kendriya Vidyalaya Muzaffarpur<br>
+73% | Muzaffarpur, India
+</div>
+
+<div class="card">
+<b>Matriculation (10th)</b><br>
+Kendriya Vidyalaya Lakhanpur<br>
+70% | Lakhanpur, Jammu
+</div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+<h2>🚀 Projects</h2>
+<div class="grid">
+<div class="card">Expense Tracker – Kotlin Android App</div>
+<div class="card">Packet Sniffer – Python Networking</div>
+</div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates" class="reveal">
+<h2>📜 Certificates</h2>
+<div class="grid">
+<div class="card">Coursera – Fundamentals, TCP/IP Advanced, Packet Switching</div>
+<div class="card">NPTEL – Cryptography & Network Security</div>
+</div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="reveal">
+<h2>🏆 Achievements</h2>
+<div class="grid">
+<div class="card">Hosted CTF with 150+ participants</div>
+<div class="card">Top 10 Hackathon Finish</div>
+</div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="reveal">
+<h2>📄 Resume</h2>
+<a href="resume.pdf" download><button class="btn">Download Resume</button></a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+<h2>📬 Get In Touch</h2>
+<div class="contact-wrapper">
+<div class="contact-form">
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea>
+<button class="btn">Send Message</button>
+</div>
+<div class="contact-info">
+📧 adarsh939939@gmail.com<br>
+📞 8437870692<br>
+🔗 linkedin.com/in/adarshanand2125<br>
+💻 github.com/adarsh2125github
+</div>
+</div>
+</section>
+
+<footer>© 2026 Adarsh Anand</footer>
+
+<!-- THEME BUTTON -->
+<button class="theme-toggle" onclick="changeTheme()">🎨</button>
+
+<script>
+const themes=["blue","green","red","yellow","black","white"];
+let i=0;
+
+function changeTheme(){
+i=(i+1)%themes.length;
+document.body.className=themes[i];
+}
+/* skill bar animation */
+document.querySelectorAll(".fill").forEach(bar=>{
+window.addEventListener("scroll",()=>{
+if(bar.getBoundingClientRect().top<window.innerHeight){
+bar.style.width=bar.dataset.width;
+}
+});
+});
+
+/* reveal */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+reveals.forEach(r=>{
+if(r.getBoundingClientRect().top<window.innerHeight-100){
+r.classList.add("active");
+}
+});
+});
+</script>
+
+</body>
+</html>
