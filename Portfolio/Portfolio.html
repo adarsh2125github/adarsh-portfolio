@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adarsh Anand | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= THEME VARIABLES ================= */
+:root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --accent:#00e5ff;
+    --text:#ffffff;
+}
+
+/* ===== THEMES ===== */
+body.blue   { --accent:#00e5ff; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.green  { --accent:#00ff88; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.red    { --accent:#ff4d4d; --bg:#0f172a; --card:#1e293b; --text:white; }
+body.yellow { --accent:#ffd93d; --bg:#0f172a; --card:#1e293b; --text:black; }
+body.black  { --accent:#888;    --bg:#000;    --card:#111;    --text:white; }
+body.white  { --accent:#333;    --bg:#f5f5f5; --card:#ffffff; --text:#111; }
+
+/* ================= GLOBAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:.4s;
+}
+
+section{
+    padding:100px 8%;
+}
+
+h2{
+    color:var(--accent);
+    margin-bottom:35px;
+}
+
+/* ================= NAV ================= */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:18px 8%;
+    background:#0b1020;
+    display:flex;
+    justify-content:space-between;
+    z-index:1000;
+}
+
+/* ===== SKILL STYLE UPGRADE ===== */
+.skill-item{
+    margin-bottom:18px;
+}
+
+.skill-item span{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.bar{
+    height:10px;
+    background:#2b3a55;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:var(--accent); /* auto theme color */
+    border-radius:10px;
+    transition:1.5s;
+}
+
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{color:var(--accent);}
+
+/* ================= HERO ================= */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+}
+
+.hero img{
+    width:260px;
+    border-radius:50%;
+    box-shadow:0 0 40px var(--accent);
+}
+
+/* ================= GRID + CARDS ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+/* ===== Skills 70/30 Layout ===== */
+.skills-layout{
+    display:grid;
+    grid-template-columns: 7fr 3fr; /* 70% 30% */
+    gap:25px;
+}
+
+/* mobile responsive */
+@media (max-width: 900px){
+    .skills-layout{
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.card{
+    background:var(--card);
+    padding:22px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px var(--accent);
+}
+
+/* ================= ABOUT (UPDATED LAYOUT) ================= */
+.about-wrapper{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.about-photo{
+    width:320px;
+    border-radius:12px;
+}
+
+.about-text{
+    flex:1;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* Projects Card Styling */
+.card h3 {
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* ================= SKILL BARS ================= */
+.bar{
+    height:10px;
+    background:#2b3a55;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:0;
+    background:var(--accent);
+    border-radius:10px;
+    transition: width 1.5s ease;
+}
+
+.resume-buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 15px var(--accent);
+}
+
+/* Certificate Styling */
+.cert-buttons{
+    margin-top:12px;
+    display:flex;
+    gap:10px;
+}
+
+.card h3{
+    color:var(--accent);
+    margin-bottom:6px;
+}
+
+.card p{
+    font-size:14px;
+    margin-bottom:10px;
+    opacity:.9;
+}
+
+
+
+
+/* ================= CONTACT ================= */
+.contact-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-form,
+.contact-info{
+    background:var(--card);
+    padding:25px;
+    border-radius:12px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:6px;
+}
+
+.btn{
+    background:var(--accent);
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* ================= REVEAL ANIMATION ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+.reveal.active{
+    opacity:1;
+    transform:none;
+}
+
+/* ================= THEME BUTTON ================= */
+.theme-toggle{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:none;
+    background:var(--accent);
+    cursor:pointer;
+    box-shadow:0 0 20px var(--accent);
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#0b1020;
+}
+
+</style>
+</head>
+
+<body class="blue">
+
+<!-- NAV -->
+<nav>
+<h3>Adarsh Anand</h3>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#certificates">Certificates</a></li>
+<li><a href="#achievements">Achievements</a></li>
+<li><a href="#resume">Resume</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero reveal">
+<img src="profile.jpg">
+<div>
+<h1>Hi, I'm <span style="color:var(--accent)">Adarsh Anand</span></h1>
+<p>Cybersecurity • Android App Development </p>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+<h2>About Me</h2>
+
+<div class="about-wrapper">
+
+<img src="linkedin.jpg" class="about-photo">
+
+<div class="about-text">
+I'm a passionate Cybersecurity enthusiast and Android App Developer from Punjab, India.  
+I build secure systems, create Kotlin Android apps, and enjoy solving real-world problems.  
+
+I actively participate in hackathons, CTFs, and development projects to sharpen my skills and gain practical experience.
+
+<div class="grid" style="margin-top:25px">
+<div class="card">📍 Punjab, India<br></div>
+<div class="card">🌐 Surfing Web<br>📚 Reading<br>🎵 Music</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- EDUCATION (NEW ADDED) -->
+<section id="education" class="reveal">
+<h2>🎓 Education</h2>
+
+<div class="grid">
+<div class="card">
+<b>B.Tech – Computer Science</b><br>
+Lovely Professional University<br>
+Punjab, India<br>
+CGPA: 6 | Since 2023
+</div>
+
+<div class="card">
+<b>Intermediate (12th)</b><br>
+Kendriya Vidyalaya Muzaffarpur<br>
+Muzaffarpur, India
+</div>
+
+<div class="card">
+<b>Matriculation (10th)</b><br>
+Kendriya Vidyalaya Lakhanpur<br>
+Lakhanpur, Jammu
+</div>
+</div>
+</section>
+
+<!-- ================= SKILLS (NEWLY ADDED - NO REMOVAL) ================= -->
+<!-- ================= SKILLS (UPDATED WITH % + PROGRESS) ================= -->
+<section id="skills" class="reveal">
+<h2>💻 Skills</h2>
+
+<div class="skills-layout">
+
+    <!-- Programming Skills (70%) -->
+   <div class="card">
+
+<h3 style="margin-bottom:15px;">Programming Languages</h3>
+
+<div class="skill-item">
+<span>Core C <b>80%</b></span>
+<div class="bar"><div class="fill" data-width="80%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Core C++ <b>90%</b></span>
+<div class="bar"><div class="fill" data-width="90%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Core Python <b>85%</b></span>
+<div class="bar"><div class="fill" data-width="85%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Core Java <b>85%</b></span>
+<div class="bar"><div class="fill" data-width="85%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Core Kotlin <b>80%</b></span>
+<div class="bar"><div class="fill" data-width="80%"></div></div>
+</div>
+
+<div class="skill-item">
+<span>Core HTML / CSS / JS <b>88%</b></span>
+<div class="bar"><div class="fill" data-width="88%"></div></div>
+</div>
+
+</div>
+
+    <!-- Soft Skills (30%) -->
+    <div class="card">
+<h3>Soft Skills</h3>
+Hard Working<br><br>
+Problem Solving<br><br>
+Communication<br><br>
+Teamwork<br><br>
+Quick Learner
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+
+
+
+<!-- PROJECTS -->
+<section id="projects" class="reveal">
+    <h2>🚀 Projects</h2>
+
+    <div class="grid">
+
+        <!-- Expense Tracker -->
+        <div class="card">
+            <h3>💸 Expense Tracker</h3>
+            <p>A simple Kotlin Android app to manage and track daily expenses.</p>
+            <div style="margin-top:12px">
+                <a href="https://github.com/adarsh2125github/simple_expense_tracker" target="_blank">
+                    <button class="btn">View</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Linux System Monitor -->
+        <div class="card">
+            <h3>🖥 Linux System Monitor</h3>
+            <p>A Python tool that displays real-time system metrics (CPU, RAM, Disk, etc.) for Linux systems.</p>
+            <div style="margin-top:12px">
+                <a href="https://github.com/adarsh2125github/linux-system-monitor" target="_blank">
+                    <button class="btn">View</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Cyber Toolkit -->
+        <div class="card">
+            <h3>🛡 Cyber Toolkit</h3>
+            <p>An all-in-one cybersecurity utility with tools like Port Scanner, WHOIS lookup, hash generator, networking helpers, and more.</p>
+            <div style="margin-top:12px">
+                <a href="https://github.com/adarsh2125github/Cyber_Toolkit" target="_blank">
+                    <button class="btn">View</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section id="certificates" class="reveal">
+<h2>📜 Certificates</h2>
+
+<div class="grid">
+
+   <!-- Networking Fundamentals -->
+<div class="card">
+    <h3>Networking Fundamentals</h3>
+    <p>Coursera – TCP/IP, Packet Switching, Reliable Services</p>
+
+    <div class="cert-buttons">
+        <a href="Fundamentals.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Fundamentals.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- NPTEL -->
+<div class="card">
+    <h3>Cryptography & Network Security</h3>
+    <p>NPTEL – IIT Course Certification</p>
+
+    <div class="cert-buttons">
+        <a href="nptl.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="nptl.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- Packet Switching -->
+<div class="card">
+    <h3>Packet Switching Networks</h3>
+    <p>Understanding packet switching concepts and network routing</p>
+
+    <div class="cert-buttons">
+        <a href="Packet switching Network and Algrothim.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Packet switching Network and Algrothim.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- Peer to Peer -->
+<div class="card">
+    <h3>Peer to Peer Networks</h3>
+    <p>Architecture and implementation of P2P systems</p>
+
+    <div class="cert-buttons">
+        <a href="PEER TO PEER.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="PEER TO PEER.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- TCP/IP Advanced -->
+<div class="card">
+    <h3>TCP/IP Advanced Topics</h3>
+    <p>Deep dive into TCP/IP protocols and networking layers</p>
+
+    <div class="cert-buttons">
+        <a href="Tcp Ip advanced topics.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Tcp Ip advanced topics.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- Bits & Bytes -->
+<div class="card">
+    <h3>Bits & Bytes Networking</h3>
+    <p>Networking basics and data transmission fundamentals</p>
+
+    <div class="cert-buttons">
+        <a href="Bits By Bits Networking.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Bits By Bits Networking.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- Digital Systems -->
+<div class="card">
+    <h3>Digital Systems from IoT</h3>
+    <p>Digital electronics and IoT system design concepts</p>
+
+    <div class="cert-buttons">
+        <a href="Digital System From logical gates to processor.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Digital System From logical gates to processor.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+<!-- Hardware -->
+<div class="card">
+    <h3>Introduction to Hardware</h3>
+    <p>Basic hardware architecture and system components</p>
+
+    <div class="cert-buttons">
+        <a href="Intorduction to hardware.pdf" target="_blank">
+            <button class="btn">View</button>
+        </a>
+        <a href="Intorduction to hardware.pdf" download>
+            <button class="btn">Download</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+</div>
+</section>
+
+
+
+
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="reveal">
+<h2>🏆 Achievements</h2>
+<div class="grid">
+<div class="card">Hosted CTF with 150+ participants</div>
+<div class="card">Top 10 Hackathon Finish</div>
+</div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="reveal">
+<h2>📄 Resume</h2>
+
+<div class="resume-buttons">
+    <!-- View button -->
+    <a href="resume.pdf" target="_blank">
+        <button class="btn">View Resume</button>
+    </a>
+
+    <!-- Download button -->
+    <a href="resume.pdf" download>
+        <button class="btn">Download Resume</button>
+    </a>
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+<h2>📬 Get In Touch</h2>
+<div class="contact-wrapper">
+<div class="contact-form">
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea>
+<button class="btn">Send Message</button>
+</div>
+<div class="contact-info">
+ 
+📧 
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=adarsh939939@gmail.com" target="_blank">
+adarsh939939@gmail.com
+</a>
+
+
+<br><br>
+
+
+📞 
+<a href="tel:+918437870692">
++91 8437870692
+</a>
+<br><br>
+
+
+🔗 
+<a href="https://www.linkedin.com/in/adarshanand2125" target="_blank">
+LinkedIn Profile
+</a>
+<br><br>
+
+💻 
+<a href="https://github.com/adarsh2125github" target="_blank">
+GitHub Profile
+</a>
+
+</div>
+
+</div>
+</section>
+
+<footer>© 2026 Adarsh Anand</footer>
+
+<!-- THEME BUTTON -->
+<button class="theme-toggle" onclick="changeTheme()">🎨</button>
+
+<script>
+const themes=["blue","green","red","yellow","black","white"];
+let i=0;
+
+function changeTheme(){
+i=(i+1)%themes.length;
+document.body.className=themes[i];
+}
+/* skill bar animation */
+const bars = document.querySelectorAll(".fill");
+
+window.addEventListener("scroll", () => {
+    bars.forEach(bar => {
+        if (bar.getBoundingClientRect().top < window.innerHeight) {
+            bar.style.width = bar.dataset.width;
+        }
+    });
+});
+
+
+/* reveal */
+const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll",()=>{
+reveals.forEach(r=>{
+if(r.getBoundingClientRect().top<window.innerHeight-100){
+r.classList.add("active");
+}
+});
+});
+</script>
+
+</body>
+</html>
